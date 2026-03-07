@@ -56,6 +56,7 @@ with st.expander("Developer Debug Info"):
     st.write("Difficulty:", difficulty)
     st.write("History:", st.session_state.history)
 
+#FIX: Pressing Enter to submit a guess using Claude Agent mode
 with st.form(key="guess_form"):
     raw_guess = st.text_input(
         "Enter your guess:",
@@ -82,7 +83,6 @@ if st.session_state.status != "playing":
         st.error("Game over. Start a new game to try again.")
     st.stop()
 
-# FIXME: Logic breaks here
 
 if submit:
     st.session_state.attempts += 1
@@ -95,10 +95,8 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        if st.session_state.attempts % 2 == 0:
-            secret = str(st.session_state.secret)
-        else:
-            secret = st.session_state.secret
+#FIX: Removed previous code that converted secret to string on even-numbered attempts using Claude Agent mode
+        secret = st.session_state.secret
 
         outcome, message = check_guess(guess_int, secret)
 

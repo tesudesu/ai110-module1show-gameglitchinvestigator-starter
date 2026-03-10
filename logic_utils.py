@@ -43,6 +43,7 @@ def check_guess(guess, secret):
     if guess == secret:
         return "Win", "🎉 Correct!"
 
+#FIX: Using Claude Agent mode, corrected hint messages and deleted redundant code about TypeError since secret is now always an int 
     if guess > secret:
         return "Too High", "📉 Go LOWER!"
     else:
